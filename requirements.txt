@@ -1,0 +1,3 @@
+pydub
+tacotron2
+torch
