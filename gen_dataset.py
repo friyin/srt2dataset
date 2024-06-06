@@ -28,6 +28,8 @@ def init_globals():
     global hparams, stft
 
     hparams = t_hparams.create_hparams()
+    hparams.sampling_rate = 44010
+    #hparams.sampling_rate = 48000
     stft = layers.TacotronSTFT(hparams.filter_length, hparams.hop_length, hparams.win_length,
                                hparams.n_mel_channels, hparams.sampling_rate, hparams.mel_fmin,
                                hparams.mel_fmax)
@@ -179,7 +181,8 @@ def audio_srt_to_chunks(speaker, audio_filename_in, lang, outdir, noise_remove=F
                 continue
 
             #print(f"ST: {start_time} - {end_time}: {text}")
-            audio_chunk = audio_obj[start_time - 100 : end_time + 100]
+            #audio_chunk = audio_obj[start_time - 100 : end_time + 100]
+            audio_chunk = audio_obj[start_time - 50 : end_time + 150]
             audio_chunk = effects.normalize(audio_chunk) 
 
 
